@@ -2,10 +2,8 @@
   "name": "h18",
   "version": "1.0.0",
   "description": "",
-  "main": "bad-client.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node h18.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
