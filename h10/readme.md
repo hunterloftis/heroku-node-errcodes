@@ -2,6 +2,20 @@
 
 An example of triggering [Heroku's H10 Error](https://devcenter.heroku.com/articles/error-codes#h10-app-crashed) with Node.js.
 
+## Try it on Heroku
+
+```
+$ git clone https://github.com/hunterloftis/heroku-node-errcodes.git
+$ cd heroku-node-errcodes/h10
+$ git init
+$ git add --all
+$ git commit -am 'h10 example'
+$ heroku create
+$ git push heroku master
+$ heroku open
+$ heroku logs --tail
+```
+
 ## What happens
 
 As a human, you can look at the source code and realize that this app starts with `node app.js`.
