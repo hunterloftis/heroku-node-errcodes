@@ -9,7 +9,8 @@ However, deployments must be automated.
 
 To try to start your app, Heroku first looks for a Procfile, which doesn't exist here.
 Then, it checks for a `start` script in package.json, which also doesn't exist.
-Finally, it tries to run the default start script, which is `node server.js`, which fails.
+Finally, it tries to run the default start script, which is `node server.js`, which fails
+because there's no server.js file.
 
 Having been unable to start the app, Heroku logs an H10 error.
 
