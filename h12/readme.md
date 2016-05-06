@@ -48,4 +48,22 @@ What is the last successful step?
 
 Finally, investigate the code to find which branch doesn't provide a response.
 
-Following the chain-of-responsibility pattern can help minimize this sort of logical error.
+With Express, following the chain-of-responsibility pattern can help minimize this sort of logical error.
+Instead of this:
+
+```js
+app.get('/app/:id', doEverythingInOneHugeFunctionWithAsyncBranches);
+```
+
+Use this:
+
+```js
+app.get('/app/:id', checkUserAuth, findApp, renderView, sendJSON);
+
+function checkUserAuth(req, res, next) {
+  if (req.session.user) return next();
+  return next(new NotAuthorizedError());
+}
+```
+
+You'll also get the added benefit of unified error handling through the [error middleware stack](http://expressjs.com/en/guide/error-handling.html).

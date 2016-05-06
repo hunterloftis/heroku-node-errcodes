@@ -7,5 +7,8 @@ http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     res.end('This route works.\n');
   }
-  // There's no "else" here, so whenever the "if" fails, the route times out
+  else {
+    console.log('Something went wrong!');
+    // There's no res.end() here, so even though we log errors, the client sees nothing and times out!
+  }
 }).listen(PORT);
