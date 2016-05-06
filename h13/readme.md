@@ -36,3 +36,16 @@ Next, try to isolate a single route that consistently creates an H13 error.
 Then, add logs along all the steps in that route that logs the step along with the x-request-id header.
 These logs will tell you what you can safely ignore - everything logged is successfully handled.
 Somewhere in the rest of the handler, an error is thrown or a socket is explicitly destroyed.
+
+## Bad clients
+
+Bad clients can also cause H13 errors by sending invalid requests that Node's low-level HTTP server will reject immediately.
+You can test this out on any Heroku Node.js app with the `bad-client.js` file here:
+
+```
+$ HOST=appname.herokuapp.com PORT=80 node bad-client.js
+$ heroku logs --tail -a appname
+```
+
+In this case, the client sends a path which starts with '?' ('?invalid=request' vs the correct '/?invalid=request').
+Node's HTTP server will close the connection immediately without giving your application a chance to handle it.
