@@ -1,4 +1,4 @@
-# H10 - App Crashed
+# H10 - App crashed
 
 An example of triggering [Heroku's H10 Error](https://devcenter.heroku.com/articles/error-codes#h10-app-crashed) with Node.js.
 

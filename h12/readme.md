@@ -1,4 +1,4 @@
-# H12 - Request Timeout
+# H12 - Request timeout
 
 An example of triggering [Heroku's H12 Error](https://devcenter.heroku.com/articles/error-codes#h12-request-timeout) with Node.js.
 

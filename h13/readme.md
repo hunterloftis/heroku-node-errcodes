@@ -1,4 +1,4 @@
-# H13 - Connection Closed Without Response
+# H13 - Connection closed without response
 
 An example of triggering [Heroku's H13 Error](https://devcenter.heroku.com/articles/error-codes#h13-connection-closed-without-response) with Node.js.
 

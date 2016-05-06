@@ -1,4 +1,4 @@
-# H11 - Backlog Too Deep
+# H11 - Backlog too deep
 
 An example of triggering [Heroku's H11 Error](https://devcenter.heroku.com/articles/error-codes#h11-backlog-too-deep) with Node.js.
 
