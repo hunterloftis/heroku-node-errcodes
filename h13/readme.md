@@ -22,8 +22,14 @@ The server listens on `PORT` and accepts connections,
 but then destroys the connection's socket without sending any response.
 
 The simplest way to simulate this is to immediately call `req.socket.destroy()`.
-In practice, this usually happens due to the application throwing an error before a response is sent.
+In practice, the socket is usually destroyed because the application threw an error before a response is sent.
 Throwing the error exits the process, which destroys any open sockets, triggering H13s.
+
+If you're neither explicitly destroying a socket, nor seeing any exceptions,
+your app may be [catching UncaughtExceptions](https://nodejs.org/api/process.html#process_event_uncaughtexception).
+It may be doing this directly, in your code, or through one of several
+modules that implement an UncaughtException handler.
+Note that this is [almost always a bad idea](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly).
 
 ## How to fix it
 
