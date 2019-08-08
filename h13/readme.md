@@ -46,6 +46,20 @@ Somewhere in the rest of the handler, an error is thrown or a socket is explicit
 ## Bad clients
 
 Bad clients can also cause H13 errors by sending invalid requests that Node's low-level HTTP server will reject immediately.
+In these cases, the server is unable to successfully create the `req` object and your application's code will not be called.
+
+You can catch and respond to these errors by listening for the [`clientError` event](https://nodejs.org/api/http.html#http_event_clienterror) on the Node server instance.
+
+```
+// for an express app, the server is returned from the `.listen()` method
+let server = app.listen(...);
+
+server.on('clientError', (err, socket) => {
+  console.error(err);
+  socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+});
+```
+
 You can test this out on any Heroku Node.js app with the `bad-client.js` file here:
 
 ```
